@@ -14,7 +14,7 @@ class TuplesTest: XCTestCase {
     
     // Step 2
     func testTuplePositions() {
-        let item = ("polos", Double: 29.99, 2)
+        let item = ("polos", 29.99, 2)
         let amount = item.1 * Double(item.2)
         
         print("\(item) -> \(amount)")
@@ -39,7 +39,9 @@ class TuplesTest: XCTestCase {
     }
     
     // Step 5
-    func formatted(item: (String, Double, Int)) -> (String, Double) {
+    typealias LineItem = (name: String, price: Double, quantity: Int)
+    
+    func formatted(item: LineItem) -> (String, Double) {
         let amount = calculatedAmount(item: item)
         return ("\(item) -> \(amount)", amount)
     }
