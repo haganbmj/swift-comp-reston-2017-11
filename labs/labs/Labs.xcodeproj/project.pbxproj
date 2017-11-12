@@ -15,6 +15,7 @@
 		3FC649971FB798480013C569 /* TuplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC649951FB795D90013C569 /* TuplesTests.swift */; };
 		3FC649991FB893980013C569 /* StructTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC649981FB893980013C569 /* StructTests.swift */; };
 		3FC6499B1FB8A3DD0013C569 /* ClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6499A1FB8A3DD0013C569 /* ClassesTests.swift */; };
+		8FFE870327E71AC7A84BB2EE /* OptionalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFE8F079D5F0F95BDC3B858 /* OptionalsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		3FC649981FB893980013C569 /* StructTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructTests.swift; sourceTree = "<group>"; };
 		3FC6499A1FB8A3DD0013C569 /* ClassesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesTests.swift; sourceTree = "<group>"; };
 		8FFE85E00D1E270E43903178 /* .editorconfig */ = {isa = PBXFileReference; lastKnownFileType = file.ts; path = .editorconfig; sourceTree = "<group>"; };
+		8FFE8F079D5F0F95BDC3B858 /* OptionalsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				3FC649951FB795D90013C569 /* TuplesTests.swift */,
 				3FC649981FB893980013C569 /* StructTests.swift */,
 				3FC6499A1FB8A3DD0013C569 /* ClassesTests.swift */,
+				8FFE8F079D5F0F95BDC3B858 /* OptionalsTests.swift */,
 			);
 			path = LabsTests;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				3FC649831FB7614C0013C569 /* LabsTests.swift in Sources */,
 				3FC649971FB798480013C569 /* TuplesTests.swift in Sources */,
 				3FC649941FB78D160013C569 /* CollectionsTests.swift in Sources */,
+				8FFE870327E71AC7A84BB2EE /* OptionalsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,12 +15,12 @@ class Person: Likeable, CustomDebugStringConvertible {
     var numberOfLikes = 0
     var friendId = 0
     var friends: [Friendable] = []
-    
+
     init(firstName: String, lastName: String) {
         self.firstName = firstName
         self.lastName = lastName
     }
-    
+
     func like() {
         self.numberOfLikes += 1
     }
@@ -110,5 +110,19 @@ class ClassesTests: XCTestCase {
         let person2 = Person(firstName: "Joe", lastName: "Joe")
         
         person1.friend(friendable: person2)
+    }
+
+    func testStrOptionals() {
+        let strings: [String?] = [nil, "a"]
+
+        for case let str? in strings {
+            print(str)
+        }
+
+        var objects: [Any] = [42, "Fred"]
+        for object in objects {
+            if object is Int { print("Int") }
+            if object is String { print("String") }
+        }
     }
 }
