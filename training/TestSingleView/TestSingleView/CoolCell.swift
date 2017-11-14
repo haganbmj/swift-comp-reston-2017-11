@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-private let textInset = CGPoint(x: 20, y: 30)
+private let textInset = CGPoint(x: 5, y: 5)
 private let textAttributes = [
     NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18),
     NSAttributedStringKey.foregroundColor: UIColor.white
@@ -42,11 +42,24 @@ extension CoolCell {
         animateBounce(duration: 1, size: CGSize(width: 120, height: 240))
     }
 
-    func animateBounce(duration: TimeInterval, size: CGSize) {
-        UIView.animate(withDuration: duration) { [weak self] in
-            guard let frame = self?.frame else { return }
-            self?.frame = frame.offsetBy(dx: size.width, dy: size.height)
+    func configureBounce(duration: TimeInterval, size: CGSize) {
+        UIView.setAnimationRepeatCount(1.5)
+        UIView.setAnimationRepeatAutoreverses(true)
+
+        let translation = CGAffineTransform(translationX: size.width, y: size.height)
+        transform = translation.rotated(by: CGFloat(.pi * 0.5))
+    }
+
+    func configureFinalBounce(duration: TimeInterval, size: CGSize) {
+        UIView.animate(withDuration: duration) {
+            [weak self] in self?.transform = CGAffineTransform.identity
         }
+    }
+
+    func animateBounce(duration: TimeInterval, size: CGSize) {
+        UIView.animate(withDuration: duration,
+                animations: { [weak self] in self?.configureBounce(duration: duration, size: size) },
+                completion: { [weak self] _ in self?.configureFinalBounce(duration: duration, size: size) })
     }
 }
 
@@ -106,3 +119,4 @@ extension CoolCell {
         touchesFinish(touches, with: event)
     }
 }
+
