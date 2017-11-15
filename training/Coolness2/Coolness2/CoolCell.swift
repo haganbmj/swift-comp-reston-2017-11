@@ -7,9 +7,28 @@ private let textAttributes = [
     NSAttributedStringKey.foregroundColor: UIColor.white
 ]
 
+@IBDesignable
 class CoolCell: UIView {
 
-    var text: String?
+    @IBInspectable var text: String? {
+        didSet {
+            self.sizeToFit()
+        }
+    }
+
+    @IBInspectable var borderWidth: CGFloat {
+        get { return layer.borderWidth }
+        set { layer.borderWidth = newValue }
+    }
+
+    @IBInspectable var borderColor: UIColor {
+        get {
+            guard let color = layer.borderColor else { return UIColor.white }
+            return UIColor(cgColor: color)
+        }
+        set { layer.borderColor = newValue.cgColor }
+    }
+
     var highlighted: Bool = false {
         willSet {
             alpha = newValue ? 0.5 : 1.0
@@ -20,25 +39,20 @@ class CoolCell: UIView {
         // Need to be sure to initialize any custom properties without default values before calling super.
         super.init(frame: frame)
 
-        layer.cornerRadius = 10
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.white.cgColor
-        layer.masksToBounds = true
-
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(bounce))
-        tapRecognizer.numberOfTapsRequired = 2
-        addGestureRecognizer(tapRecognizer)
+        configureLayer()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        configureLayer()
     }
 }
 
 // MARK: - Animation
 extension CoolCell {
 
-    @objc func bounce() {
+    @IBAction func bounce() {
         animateBounce(duration: 1, size: CGSize(width: 120, height: 240))
     }
 
@@ -77,6 +91,25 @@ extension CoolCell {
         newSize.height += textInset.y * 2
 
         return newSize
+    }
+
+    override func prepareForInterfaceBuilder() {
+        layer.masksToBounds = true
+    }
+
+    private func configureLayer() {
+        layer.cornerRadius = 10
+        layer.borderWidth = 3
+        layer.borderColor = UIColor.white.cgColor
+        layer.masksToBounds = true
+
+        configureGestureRecognizers()
+    }
+
+    private func configureGestureRecognizers() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(bounce))
+        tapRecognizer.numberOfTapsRequired = 2
+        addGestureRecognizer(tapRecognizer)
     }
 }
 

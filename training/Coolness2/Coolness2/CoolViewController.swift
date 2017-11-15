@@ -25,6 +25,14 @@ class CoolViewController: UIViewController {
         textField.text = ""
     }
 
+    override func viewDidLoad() {
+        let subview1 = CoolCell(frame: CGRect(x: 40, y: 60, width: 80, height: 35))
+        subview1.text = "Hello World"
+        subview1.sizeToFit()
+        subview1.backgroundColor = .purple
+        contentView.addSubview(subview1)
+    }
+
 //    override func loadView() {
 //        Bundle.main.loadNibNamed("CoolStuff", owner: self)
 //    }
